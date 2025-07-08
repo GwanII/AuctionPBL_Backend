@@ -1,14 +1,15 @@
-const { MongoClient } = require("mongodb");
-
-let db;
+const mongoose = require("mongoose");
 
 const connectDB = async () => {
   try {
-    const client = await MongoClient.connect(process.env.MONGO_URL);
-    db = client.db("myAppDB");
-    console.log("📦 MongoDB 연결 성공");
+    await mongoose.connect(process.env.MONGO_URL, {
+      dbName: "auctionPBL",
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log("📦 Mongoose 연결 성공");
   } catch (err) {
-    console.error("❌ MongoDB 연결 실패:", err);
+    console.error("❌ Mongoose 연결 실패:", err);
   }
 };
 
