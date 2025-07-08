@@ -11,7 +11,7 @@ const getCustomPayments = async (req, res) => {
 
     const rawPayments = await Payment.find(filter).populate("buyUserID", "name createdAt");
 
-    console.log("🔥 필터 값:", filter);
+    console.log("filter:", filter);
     console.log("rawPayments: ",rawPayments );
 
     const formatted = rawPayments.map((p) => ({
