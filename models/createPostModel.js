@@ -1,16 +1,18 @@
 const mongoose = require('mongoose');
 
 const createPostSchema = new mongoose.Schema({
-  postId: { type: String, required: true, unique: true },
   title: { type: String, required: true },
   images: [String],
-  seller: {
-    userId: { type: String, required: true },
-    userName: { type: String, required: true },
-    userImage: String,
-  },
+  description: {type: String},
+  seller: { type: mongoose.Schema.Types.ObjectId, ref: 'users', required: true },
+  auctionPeriod: {
+    startDate: { type: Date, required: true },
+    endDate: { type: Date, required: true }},
   minimumPrice: { type: Number, required: true },
-  createdAt: { type: Date, default: Date.now },
+  isAuctionEnded: { type: Boolean, required: true},
+  finalWinner: {type: mongoose.Schema.Types.ObjectId, ref: 'users'},
+  isSold: {type: Boolean},
+  createdAt: { type: Date, default: Date.now }
 });
 
 module.exports = mongoose.model('posts', createPostSchema);
