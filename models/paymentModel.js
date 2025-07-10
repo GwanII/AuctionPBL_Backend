@@ -25,5 +25,4 @@ const paymentSchema = new mongoose.Schema({
 });
 
 // ✅ 여기 순서 중요
-const Payment = mongoose.model("Payments", paymentSchema);
 module.exports = mongoose.model("Payments", paymentSchema, "payments");

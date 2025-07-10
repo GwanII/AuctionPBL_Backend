@@ -8,11 +8,12 @@ require("./models/userModel")
 // const userRoutes = require("./routes/user");
 // const productRoutes = require("./routes/product");
 const paymentRoutes = require("./routes/paymentRoute");
-
+const auctionRoutes = require("./routes/auctionRoute");
 
 dotenv.config();
 
 const app = express();
+
 app.use(express.json());
 
 // DB 연결
@@ -22,6 +23,7 @@ connectDB();
 // app.use("/api/user", userRoutes);
 // app.use("/api/product", productRoutes);
 app.use("/api/payment", paymentRoutes);
+app.use("/api/auction", auctionRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
