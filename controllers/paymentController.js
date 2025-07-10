@@ -27,6 +27,7 @@ const getCustomPayments = async (req, res) => {
     console.error("❌ 에러 발생:", err);
     res.status(500).json({ message: "조회 실패", error: err.message || err });
   }
+  
 };
 
 module.exports = { getCustomPayments };

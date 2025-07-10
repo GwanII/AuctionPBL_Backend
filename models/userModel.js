@@ -21,4 +21,4 @@ const userSchema = new mongoose.Schema({
 });
 
 console.log("User 모델 로드됨")
-module.exports = mongoose.model("User", userSchema, "user");
+module.exports = mongoose.model("Users", userSchema, "users");

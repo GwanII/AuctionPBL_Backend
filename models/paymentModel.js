@@ -19,11 +19,11 @@ const paymentSchema = new mongoose.Schema({
   },
   buyUserID: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+    ref: "Users",
     required: true
   }
 });
 
 // ✅ 여기 순서 중요
-const Payment = mongoose.model("Payment", paymentSchema);
-module.exports = mongoose.model("Payment", paymentSchema, "payment");
+const Payment = mongoose.model("Payments", paymentSchema);
+module.exports = mongoose.model("Payments", paymentSchema, "payments");
