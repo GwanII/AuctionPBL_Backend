@@ -2,7 +2,10 @@ const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 
-const createPostRoutes = require("./routes/postRoute");
+// ===========기능 추가 시 변경하는 곳=============================================================
+const postRoute = require("./routes/postRoute");
+const dibRoute = require("./routes/dibRoute");
+// ================================================================================================
 
 
 dotenv.config();
@@ -12,7 +15,10 @@ app.use(express.json());
 
 connectDB();
 
+// ===========기능 추가 시 변경하는 곳=============================================================
 app.use("/api",postRoute);
+app.use("/api",dibRoute);
+// ================================================================================================
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

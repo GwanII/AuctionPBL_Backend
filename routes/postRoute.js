@@ -1,6 +1,6 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const postController = require('../controllers/postController');
+const postController = require("../controllers/postController");
 
 // 게시글 생성
 router.post('/posts', postController.createPost);
