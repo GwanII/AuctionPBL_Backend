@@ -1,0 +1,8 @@
+POST http://localhost:3000/chatting/send
+Content-Type: application/json
+
+{
+  "roomId": "A00001",
+  "sender": "고다은",
+  "message": "네고 될까여"
+}

@@ -7,9 +7,12 @@ const connectDB = require("./config/db");
 // const productRoutes = require("./routes/product");
 
 dotenv.config();
-
 const app = express();
+
+const chattingRoutes = require('./routes/chatting');
+
 app.use(express.json());
+app.use('/chatting', chattingRoutes);
 
 // DB 연결
 connectDB();
