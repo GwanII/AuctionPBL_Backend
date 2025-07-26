@@ -31,9 +31,9 @@ try {
 
   if (existing) { // userId가 있다면
     // postIds에 같은 postId가 들어있는지 확인
-    const alreadyExists = existing.postIds.some( // .some은 배열에 있으면 true, 없으면 false 반환.
-        (id)=> id.toString() === postId.toString()
-    ); 
+    const alreadyExists = existing.postIds.some(
+      (dib) => dib.postId.toString() === postId.toString()
+    );
     // .includes 쓰려했는데 .body로 받아온 변수는 자료형이 string임.
     // postId는 자료형이 ObjectId이니까 .some으로 확인하고 .toString 써서 자료형 통일.
 
@@ -41,7 +41,9 @@ try {
     // ㄴ이거는 좀 더 확인 해야할듯!
 
     if (alreadyExists) { // postId가 이미 있다면 찜 취소
-        existing.postIds.pull(postId);
+        existing.postIds = existing.postIds.filter(
+          (dib) => dib.postId.toString() !== postId.toString()
+        );
         await existing.save();
         return res.status(200).json({
             status: "success",
@@ -49,8 +51,13 @@ try {
         });
     }
 
+
+
     // postId가 없으면 추가
-    existing.postIds.push(postId);
+    existing.postIds.push({
+      postId: postId,
+      createdAt: new Date()
+    });
     await existing.save();
 
     return res.status(200).json({
@@ -62,7 +69,7 @@ try {
   // userId가 없으면 새 문서 생성
   const newDib = await Dib.create({
     userId,
-    postIds: [postId]
+    postIds: [{postId, createdAt: new Date()}]
   });
 
   return res.status(201).json({
@@ -78,21 +85,3 @@ try {
     message: "찜 처리 중 문제가 발생~"
   });
 }};
-
-
-
-
-// 회의 때 꼭 물어보기
-// 회의 때 꼭 물어보기
-// 회의 때 꼭 물어보기
-// 회의 때 꼭 물어보기
-// 회의 때 꼭 물어보기
-// 회의 때 꼭 물어보기
-// 회의 때 꼭 물어보기
-// 회의 때 꼭 물어보기
-// 회의 때 꼭 물어보기
-// 회의 때 꼭 물어보기
-// 회의 때 꼭 물어보기
-// 회의 때 꼭 물어보기
-// 회의 때 꼭 물어보기
-// 찜 추가 할 때마다 createdAt 추가해줘야하는가.
