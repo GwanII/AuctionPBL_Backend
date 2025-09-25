@@ -4,6 +4,8 @@
     "dotenv": "^17.0.1",
     "express": "^5.1.0",
     "mongodb": "^6.17.0",
-    "mongoose": "^8.16.1"
+    "mongoose": "^8.16.1",
+    "qrcode": "^1.5.4",
+    "uuid": "^11.1.0"
   }
 }

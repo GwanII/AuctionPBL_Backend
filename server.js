@@ -14,6 +14,7 @@ const chattingRoutes = require('./routes/chatting');
 app.use(express.json());
 app.use('/chatting', chattingRoutes);
 
+
 // DB 연결
 connectDB();
 
